@@ -52,17 +52,21 @@
 
 % изменяем стиль paragraph/subparagraph
 \makeatletter
-\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0ex}%
-	{-3.25ex plus -1ex minus -0.2ex}%
-	{1.5ex plus 0.2ex}%
-	{\normalfont\large\bfseries}}
+\renewcommand{\paragraph}{\@startsection{paragraph}%
+	{4}% level
+	{0ex}% indent
+	{12pt}% beforeskip
+	{8pt}% afterskip
+	{\normalfont\large\bfseries}} %style
 \makeatother
 
 \makeatletter
-\renewcommand{\subparagraph}{\@startsection{subparagraph}{4}{0ex}%
-	{-3.25ex plus -1ex minus -0.2ex}%
-	{1.5ex plus 0.2ex}%
-	{\normalfont\large\bfseries}}
+\renewcommand{\subparagraph}{\@startsection{subparagraph}
+	{4}% level 
+	{0ex}% indent
+	{12pt}% beforeskip
+	{8pt}% afterskip
+	{\normalfont\large\bfseries}} %style
 \makeatother
 
 % размер полей (по ГОСТу)
@@ -161,23 +165,28 @@ sortcites=true
 
 % настройка списков (нумерованных и bullet) (НУЖЕН РЕФАКТОРИНГ)
 \usepackage{enumitem}
-\renewcommand{\labelitemi}{---}
+\renewcommand{\labelitemi}{--}
+\renewcommand{\labelitemii}{--}
+\renewcommand{\labelitemiii}{--}
 \usepackage{enumitem}
 
 \setlist{nolistsep} % убираем дополнительные вертикальные отступы вокруг списков
 
-\setenumerate[1]{itemindent=0cm,
-listparindent=\parindent} % для нумерованного списка
-\setenumerate[2]{itemindent=0cm,
-listparindent=2\parindent,leftmargin=2\parindent}
+\setlist[enumerate]{leftmargin=1.25cm,itemindent=0pt}
+\setlist[itemize]{leftmargin=1.25cm,itemindent=0pt}
 
+%\setenumerate[1]{itemindent=2.7em,
+%listparindent=\parindent} % для нумерованного списка
+%\setenumerate[2]{itemindent=2.7em,
+%listparindent=2\parindent,leftmargin=2\parindent}
+%
 \renewcommand{\labelenumii}{\theenumii} % стиль первого слоя
 \renewcommand{\theenumii}{\theenumi.\arabic{enumii}.} % стиль второго слоя
-
-\setitemize[1]{itemindent=0cm,
-listparindent=\parindent} % для bullet
-\setitemize[2]{itemindent=0cm,
-listparindent=2\parindent,leftmargin=2\parindent}
+%
+%\setitemize[1]{itemindent=2.7em,
+%listparindent=\parindent} % для bullet
+%\setitemize[2]{itemindent=2.7em,
+%listparindent=2\parindent,leftmargin=2\parindent}
 
 % использование множества файлов с возможностью отдельной компиляции
 \usepackage{xr}
