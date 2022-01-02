@@ -1,0 +1,186 @@
+\usepackage{blindtext} % использовалось для тестирований
+
+% для использования с xe(la)tex
+\usepackage{fontspec}
+\usepackage[english,russian]{babel}
+\setmainfont{Times New Roman} %\setmonofont{JetBrains Mono} % a font with cyrillic
+
+% изменить название содержания
+\addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}}
+
+% 14 шрифт в документы
+\usepackage[14pt]{extsizes}
+
+% изменение стиля содержания
+\usepackage{tocloft}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecpagefont}{\normalsize}
+\setlength{\cftbeforesecskip}{0cm}
+\setlength{\cftbeforesubsecskip}{0cm}
+\setlength{\cftbeforesubsubsecskip}{0cm}
+\setlength{\cftbeforeparaskip}{0cm}
+\renewcommand{\cfttoctitlefont}{\hfill\large\bfseries}
+\renewcommand{\cftaftertoctitle}{\hfill\hfill}
+
+% добавляем параграфы в содержание и добавляем нумерацию
+\setcounter{tocdepth}{5}
+\setcounter{secnumdepth}{5}
+
+
+% математика
+\usepackage{amsmath,amssymb,amsfonts,icomma,mathtools}
+
+% картинки (в квардратные скобки можно прописать draft и картинки будут добавляться ссылками, компиляция быстрее)
+\usepackage[]{graphicx}
+
+% гиперссылки и ссылки в документе (плюс формат ссылок Times New Roman'ом)
+\usepackage[unicode]{hyperref}
+\hypersetup{
+	colorlinks,
+	citecolor=black,
+	filecolor=black,
+	linkcolor=black,
+	urlcolor=blue
+}
+\usepackage{url}
+\urlstyle{same}
+
+% размер шрифта разделов (нормальный)
+\usepackage{sectsty}
+\allsectionsfont{\bfseries\normalsize}
+
+% изменяем стиль paragraph/subparagraph
+\makeatletter
+\renewcommand{\paragraph}{\@startsection{paragraph}{4}{0ex}%
+	{-3.25ex plus -1ex minus -0.2ex}%
+	{1.5ex plus 0.2ex}%
+	{\normalfont\large\bfseries}}
+\makeatother
+
+\makeatletter
+\renewcommand{\subparagraph}{\@startsection{subparagraph}{4}{0ex}%
+	{-3.25ex plus -1ex minus -0.2ex}%
+	{1.5ex plus 0.2ex}%
+	{\normalfont\large\bfseries}}
+\makeatother
+
+% размер полей (по ГОСТу)
+\usepackage[left=3cm,right=1cm, top=2cm, bottom=2cm]{geometry}
+
+% полуторный интервал между строками
+\usepackage{setspace}
+\setstretch{1.5}
+
+% отступ с первой строки
+\usepackage{indentfirst}
+
+% библиография по госту
+\usepackage[
+backend=biber,
+maxbibnames=5,
+natbib=true,
+style=gost-numeric,
+citestyle=numeric-comp,
+sorting=none,
+sortcites=true
+]{biblatex}
+%\bibliography{bibfile}
+
+
+% команды, которые будут запущены в начале каждого документа
+\AtBeginDocument{%
+	\graphicspath{{../images},{images}} % первое для сабфайлов, второе для основного
+}
+
+% команды к конце каждого документа (полезно для subfiles)
+\AtEndDocument{%
+	\clearpage
+	\newpage
+	\sloppy
+	\printbibliography[heading=bibintoc, title=СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]
+	\label{verylastpage}
+}
+
+% для расширения функциональности таблиц
+\usepackage{array}
+
+% вставка листингов кода
+\usepackage[final]{listings}
+\usepackage{color} % создание собственной цветовой схемы
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+
+\lstdefinestyle{myStyle}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	keepspaces=true,                 
+	numbers=left,       
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2,
+}
+\lstset{style=myStyle}
+
+% автоподсчёт флотов в реферате
+\usepackage{xspace}
+\usepackage[figure,table,equation,lstlisting]{totalcount}
+
+% считать количество элементов в библиографии
+\usepackage{totcount}
+\newtotcounter{citenum}
+\AtEveryBibitem{\stepcounter{citenum}}
+
+% свои команды
+\newcommand{\ten}[1]{\cdot 10^{#1}} % возводить в степень
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине
+\newcommand{\rbf}[1]{\textbf{\ref{#1}}} % жирное цитирование
+\newcommand{\refpar}[1]{\S\rbf{#1} на стр. \textbf{\pageref{#1}}} % цитирование номера параграфа с указанием на страницу
+\newcommand{\refris}[1]{рис. \rbf{#1}} % ссылка на рисунок
+\newcommand{\reftab}[1]{табл. \rbf{#1}} % ссылка на таблицу
+\newcommand{\rt}[1]{_\text{#1}} % писать русский и не только текст в подстрочном режиме в математике
+
+
+% субфигуры (много картинок в одной)
+\usepackage[labelformat=simple, labelformat=brace]{subcaption}
+\captionsetup{subrefformat=parens}
+\renewcommand{\thesubfigure}{\asbuk{subfigure}}
+
+% настройка подписей к картинкам, таблицам и прочее
+\usepackage{floatrow}
+\floatsetup[table]{capposition=top}
+\usepackage[labelsep=period]{caption}
+\captionsetup[table]{justification=centering,singlelinecheck=false,position=top}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+
+% настройка списков (нумерованных и bullet) (НУЖЕН РЕФАКТОРИНГ)
+\usepackage{enumitem}
+\renewcommand{\labelitemi}{---}
+\usepackage{enumitem}
+
+\setlist{nolistsep} % убираем дополнительные вертикальные отступы вокруг списков
+
+\setenumerate[1]{itemindent=0cm,
+listparindent=\parindent} % для нумерованного списка
+\setenumerate[2]{itemindent=0cm,
+listparindent=2\parindent,leftmargin=2\parindent}
+
+\renewcommand{\labelenumii}{\theenumii} % стиль первого слоя
+\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.} % стиль второго слоя
+
+\setitemize[1]{itemindent=0cm,
+listparindent=\parindent} % для bullet
+\setitemize[2]{itemindent=0cm,
+listparindent=2\parindent,leftmargin=2\parindent}
+
+% использование множества файлов с возможностью отдельной компиляции
+\usepackage{xr}
+\usepackage{subfiles}
+\addbibresource{\subfix{bibfile.bib}} % добавил файл с библиографией
+\externaldocument{\subfix{template.tex}}

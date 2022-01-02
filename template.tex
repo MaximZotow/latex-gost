@@ -1,0 +1,38 @@
+\documentclass[a4paper]{article}
+\input{preamble}
+\begin{document}
+	\tableofcontents
+	\section{Раздел}
+	\blindtext
+	\subsection{Подраздел}
+	\blindtext
+	\subsubsection{Подподраздел}
+	\blindtext
+	\paragraph{Параграф}
+	\blindtext
+	\subparagraph{Подпараграф}
+	\blindtext
+	
+	\newpage
+	
+	\vfill
+	
+	Теперь включаем сабфайлы
+	
+	\vfill
+	
+	\newpage
+	
+	% Создаём структуру документа
+	
+	\includegraphics{sample_pic.png}
+	
+	\subfileinclude{chapters/titul}
+	\subfileinclude{chapters/referat}
+	\tableofcontents
+	\subfileinclude{chapters/intro}
+	
+	
+	
+	\nocite{*}
+\end{document}

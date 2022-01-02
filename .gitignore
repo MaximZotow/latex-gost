@@ -9,7 +9,6 @@
 *.pdf
 *.run
 *.toc
-*.tex
 *.aux
 *.synctex.gz
 *.run.xml
