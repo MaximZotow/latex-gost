@@ -6,7 +6,7 @@
 *.ist
 *.log
 *.out
-*.pdf
+template.pdf
 *.run
 *.toc
 *.aux
