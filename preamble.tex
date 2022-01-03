@@ -127,7 +127,7 @@ sortcites=true
 }
 \lstset{style=myStyle}
 
-% автоподсчёт флотов в реферате
+% автоподсчёт флотов в рефератеч
 \usepackage{xspace}
 \usepackage[figure,table,equation,lstlisting]{totalcount}
 
@@ -144,7 +144,7 @@ sortcites=true
 \newcommand{\refris}[1]{рис. \rbf{#1}} % ссылка на рисунок
 \newcommand{\reftab}[1]{табл. \rbf{#1}} % ссылка на таблицу
 \newcommand{\rt}[1]{_\text{#1}} % писать русский и не только текст в подстрочном режиме в математике
-
+\newenvironment{aleq}{\begin{equation}\begin{aligned}}{\end{aligned}\end{equation}} % несколько уравнений под одной цифрой
 
 % субфигуры (много картинок в одной)
 \usepackage[labelformat=simple, labelformat=brace]{subcaption}

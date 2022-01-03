@@ -15,7 +15,7 @@
 	
 \cite{kuchyanovLazernayaGeneraciyaOpalopodobnyh2016} % пример вставки цитаты
 
-Вставка картинки. Смотри \refris{fig:sample_pic}
+Вставка картинки. Смотри \refris{fig:sample_pic} (смотри расстояние до нее)
 
 \begin{figure}[h]
 	\centering
@@ -23,7 +23,7 @@
 	\caption{Sample pic}
 	\label{fig:sample_pic}
 \end{figure}
-
+расстояние после
 Вставка множества картинок (subfigure). Обращаться можно по всем ключам \refris{fig:subfig_a}, \refris{fig:subfig_b}, \refris{fig:fig_of_subfig}
 
 \begin{figure}[h]
@@ -46,9 +46,9 @@
 \end{figure}	
 	
 	Пример создания таблицы см. \reftab{tab:summarized_d_D_l}
+	текст до таблицы % [H] лучше не ставить, но для теста оставим
 	
-	
-	\begin{table}[h]
+	\begin{table}[H]
 		\centering
 		\begin{tabular}{|c|c|c|c|c|c|c|}
 			\hline
@@ -62,6 +62,7 @@
 		\caption{d -- диаметр сферы, D -- расстояние между сферами (1/0.86d), $\lambda$ -- ФЗЗ, n -- коэффициент преломления}
 		\label{tab:summarized_d_D_l}
 	\end{table}
+	текст после таблицы
 	
 	Пример нумерованных списков
 	\begin{enumerate}
@@ -80,5 +81,6 @@
 			\item вложенный список
 		\end{itemize}
 	\end{itemize}
+	
 	
 \end{document}
