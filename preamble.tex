@@ -102,7 +102,7 @@
 \usepackage[left=3cm,right=1cm, top=2cm, bottom=2cm]{geometry}
 
 % полуторный интервал между строками
-\usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
 \setstretch{1.5}
 
 % отступ с первой строки
@@ -139,6 +139,8 @@ sortcites=true
 
 % для расширения функциональности таблиц
 \usepackage{array}
+\usepackage{multirow}
+\usepackage{multicol}
 
 % вставка листингов кода
 \usepackage[final]{listings}
@@ -188,11 +190,20 @@ sortcites=true
 
 % настройка подписей к картинкам, таблицам и прочее
 \usepackage{floatrow}
+%костыли
+
+\DeclareFloatVCode{beforefloat}{\vspace{5pt}}
+\DeclareFloatVCode{afterfloat}{\vspace{-15pt}}
+\floatsetup{precode=beforefloat,postcode=afterfloat,captionskip=15pt}
+
 \floatsetup[table]{capposition=top}
 \usepackage[labelsep=endash]{caption}
-\captionsetup[table]{singlelinecheck=false,position=top}
+\captionsetup[table]{singlelinecheck=false,position=top, justification=centering} %слева ужасно выглядит, договорились по центру делать
+
+% отступ после уравнений (при написании вставлять уравнения вместе с текстом, не разделять их абзацной строкой)
 \setlength{\abovedisplayskip}{0pt}
 \setlength{\belowdisplayskip}{0pt}
+
 
 % настройка списков (нумерованных и bullet) (НУЖЕН РЕФАКТОРИНГ)
 \usepackage{enumitem}
@@ -220,7 +231,7 @@ sortcites=true
 %\setitemize[2]{itemindent=2.7em,
 %listparindent=2\parindent,leftmargin=2\parindent}
 
-\setlength{\intextsep}{1.5pt}
+%\setlength{\intextsep}{\parskip}
 
 % использование множества файлов с возможностью отдельной компиляции
 \usepackage{xr}

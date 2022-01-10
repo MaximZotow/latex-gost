@@ -3,21 +3,21 @@
 \begin{document}
 	\tableofcontents
 	\section{Раздел}
-	\blindtext
+	Немного текста тут
 	\subsection{Подраздел}
-	\blindtext
+	Немного текста тут
 	\subsubsection{Подподраздел}
-	\blindtext
+	Немного текста тут
 	\paragraph{Параграф}
-	\blindtext
+	Немного текста тут
 	\subparagraph{Подпараграф}
-	\blindtext
+	Немного текста тут
 	
 	\newpage
 	
 	\vfill
 	
-	Теперь включаем сабфайлы
+	Теперь включаем сабфайлы (вся работа ведётся в них)
 	
 	\vfill
 	
@@ -28,27 +28,24 @@
 	%\includegraphics{images/sample_pic.png}
 
 	
-	%\subfileinclude{chapters/titul}
+	%\subfileinclude{chapters/titul} %(или titul_{nir/aistr}) в зав-ти от работы
 	%\subfileinclude{chapters/referat}
 	\tableofcontents
 	\subfileinclude{chapters/intro}
-	%\subfileinclude{chapters/finito}
+%	здесь создаём сабфайлы по аналогии и добавляем (их можно не добавлять, но удобнее писать работу по главам)
+	\subfileinclude{chapters/finito}
 	
 	\section{Уравнения}
 	Численный спектральный анализ для периодической функции, заданной на некотором отрезке дискретными отсчётами $y_r$, сводится к вычислению коэффициентов ряда Фурье по формулам и ещё буквы для полной строки:
-	
 	\begin{equation}\label{eq:a0}
 		a_0=\frac{\sum\limits_{r=0}^{M-1}y_r}{M}
 	\end{equation}
-	
 	текст между междутекстие полная строка
-	
 	\begin{equation}
 		a_j=\sqrt{a_{sj}^2+a_{cj}^2}
 	\end{equation}
-	
-\blindtext
-	
+
+буквы для вида
 	\begin{aleq}\label{eq:ascj}
 		a_{sj} &= \frac{2}{M}\sum\limits_{r=0}^{M-1}y_r\sin\left(\frac{2\pi k_j r}{M}\right)\\
 		a_{cj} &= \frac{2}{M}\sum\limits_{r=0}^{M-1}y_r\cos\left(\frac{2\pi k_j r}{M}\right)
