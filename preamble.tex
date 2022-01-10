@@ -5,6 +5,7 @@
 \usepackage[english,russian]{babel}
 \setmainfont{Times New Roman} %\setmonofont{JetBrains Mono} % a font with cyrillic
 
+
 % изменить название содержания
 \addto\captionsrussian{\renewcommand{\contentsname}{СОДЕРЖАНИЕ}}
 
@@ -50,6 +51,34 @@
 \usepackage{sectsty}
 \allsectionsfont{\bfseries\normalsize}
 
+% изменяем стиль section/subsection/subsubsection
+\makeatletter
+\renewcommand{\section}{\@startsection{section}%
+	{4}% level
+	{0ex}% indent
+	{12pt}% beforeskip
+	{8pt}% afterskip
+	{\normalfont\normalsize\bfseries}} %style
+\makeatother
+
+\makeatletter
+\renewcommand{\subsection}{\@startsection{subsection}%
+	{4}% level
+	{0ex}% indent
+	{12pt}% beforeskip
+	{8pt}% afterskip
+	{\normalfont\normalsize\bfseries}} %style
+\makeatother
+
+\makeatletter
+\renewcommand{\subsubsection}{\@startsection{subsubsection}%
+	{4}% level
+	{0ex}% indent
+	{12pt}% beforeskip
+	{8pt}% afterskip
+	{\normalfont\normalsize\bfseries}} %style
+\makeatother
+
 % изменяем стиль paragraph/subparagraph
 \makeatletter
 \renewcommand{\paragraph}{\@startsection{paragraph}%
@@ -57,7 +86,7 @@
 	{0ex}% indent
 	{12pt}% beforeskip
 	{8pt}% afterskip
-	{\normalfont\large\bfseries}} %style
+	{\normalfont\normalsize\bfseries}} %style
 \makeatother
 
 \makeatletter
@@ -66,7 +95,7 @@
 	{0ex}% indent
 	{12pt}% beforeskip
 	{8pt}% afterskip
-	{\normalfont\large\bfseries}} %style
+	{\normalfont\normalsize\bfseries}} %style
 \makeatother
 
 % размер полей (по ГОСТу)
@@ -78,6 +107,8 @@
 
 % отступ с первой строки
 \usepackage{indentfirst}
+% красная строка для всего документа 
+\setlength{\parindent}{1.25cm}
 
 % библиография по госту
 \usepackage[
@@ -158,10 +189,10 @@ sortcites=true
 % настройка подписей к картинкам, таблицам и прочее
 \usepackage{floatrow}
 \floatsetup[table]{capposition=top}
-\usepackage[labelsep=period]{caption}
-\captionsetup[table]{justification=centering,singlelinecheck=false,position=top}
-\setlength{\abovedisplayskip}{3pt}
-\setlength{\belowdisplayskip}{3pt}
+\usepackage[labelsep=endash]{caption}
+\captionsetup[table]{singlelinecheck=false,position=top}
+\setlength{\abovedisplayskip}{0pt}
+\setlength{\belowdisplayskip}{0pt}
 
 % настройка списков (нумерованных и bullet) (НУЖЕН РЕФАКТОРИНГ)
 \usepackage{enumitem}
@@ -172,8 +203,9 @@ sortcites=true
 
 \setlist{nolistsep} % убираем дополнительные вертикальные отступы вокруг списков
 
-\setlist[enumerate]{leftmargin=1.25cm,itemindent=0pt}
-\setlist[itemize]{leftmargin=1.25cm,itemindent=0pt}
+% стили для нумерованного и bullet списков 
+\setlist[enumerate]{leftmargin=1.75cm,itemindent=0pt}
+\setlist[itemize]{leftmargin=1.75cm,itemindent=0pt}
 
 %\setenumerate[1]{itemindent=2.7em,
 %listparindent=\parindent} % для нумерованного списка
@@ -187,6 +219,8 @@ sortcites=true
 %listparindent=\parindent} % для bullet
 %\setitemize[2]{itemindent=2.7em,
 %listparindent=2\parindent,leftmargin=2\parindent}
+
+\setlength{\intextsep}{1.5pt}
 
 % использование множества файлов с возможностью отдельной компиляции
 \usepackage{xr}
