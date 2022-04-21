@@ -175,7 +175,8 @@ sortcites=true
 
 % свои команды
 \newcommand{\ten}[1]{\cdot 10^{#1}} % возводить в степень
-\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине (allign-left)
+\newcolumntype{L}[1]{>{\flushleft\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине (allign-center)
 \newcommand{\rbf}[1]{\textbf{\ref{#1}}} % жирное цитирование
 \newcommand{\refpar}[1]{\S\rbf{#1} на стр. \textbf{\pageref{#1}}} % цитирование номера параграфа с указанием на страницу
 \newcommand{\refris}[1]{рис. \rbf{#1}} % ссылка на рисунок
