@@ -3,7 +3,8 @@
 % для использования с xe(la)tex
 \usepackage{fontspec}
 \usepackage[english,russian]{babel}
-\setmainfont{Times New Roman} %\setmonofont{JetBrains Mono} % a font with cyrillic
+\setmainfont{Times New Roman}
+\setmonofont{JetBrains Mono} % a font with cyrillic
 
 
 % изменить название содержания
@@ -133,15 +134,14 @@ sortcites=true
 	\clearpage
 	\newpage
 	\sloppy
-	\printbibliography[heading=bibintoc, title=СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]
-	\label{verylastpage}
+	%\printbibliography[heading=bibintoc, title=СПИСОК ИСПОЛЬЗОВАННЫХ ИСТОЧНИКОВ]
+	%\label{verylastpage}
 }
 
 % для расширения функциональности таблиц
 \usepackage{array}
 \usepackage{multirow}
 \usepackage{multicol}
-\usepackage{makecell} % \makecell{text \\ newline} для длинных строк
 
 % вставка листингов кода
 \usepackage[final]{listings}
@@ -161,14 +161,14 @@ sortcites=true
 	showspaces=false,                
 	showstringspaces=false,
 	showtabs=false,                  
-	tabsize=2,
+	tabsize=1
 }
 \lstset{style=myStyle}
 
 % автоподсчёт флотов в рефератеч
 \usepackage{xspace}
 \usepackage[figure,table,equation,lstlisting]{totalcount}
-
+\usepackage{pdfpages}
 % считать количество элементов в библиографии
 \usepackage{totcount}
 \newtotcounter{citenum}
@@ -176,8 +176,9 @@ sortcites=true
 
 % свои команды
 \newcommand{\ten}[1]{\cdot 10^{#1}} % возводить в степень
-\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине (allign-left)
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине
 \newcolumntype{L}[1]{>{\flushleft\arraybackslash}m{#1}} % новый тип колонки в таблицах с центрированием по высоте и ширине (allign-center)
+\newcolumntype{P}[1]{>{\raggedright\arraybackslash}p{#1}} % аналогично
 \newcommand{\rbf}[1]{\textbf{\ref{#1}}} % жирное цитирование
 \newcommand{\refpar}[1]{\S\rbf{#1} на стр. \textbf{\pageref{#1}}} % цитирование номера параграфа с указанием на страницу
 \newcommand{\refris}[1]{рис. \rbf{#1}} % ссылка на рисунок
@@ -240,3 +241,17 @@ sortcites=true
 \usepackage{subfiles}
 \addbibresource{\subfix{bibfile.bib}} % добавил файл с библиографией
 \externaldocument{\subfix{template.tex}}
+
+% небольшие добавления диплома
+%рисует двойную линию в титульном листе
+\newcommand{\drawduallines}{\noindent\rule{\textwidth}{4pt}
+	
+	\vspace{-0.8cm}
+	
+	\noindent\rule{\textwidth}{1pt}	}
+	
+\newcommand{\ulinedtext}[2]{$\underset{\text{#2}}{\uline{\text{#1}}}$} % нужно для таблице в титульном листе
+
+\usepackage[normalem]{ulem} % нижнее подчеркивание текста
+\usepackage{calc} % команда widthof для титульного
+\newcommand{\uname}[1]{\ulinedtext{\hspace{0.5\linewidth-{\widthof{#1}*\real{0.5}}} #1  \hspace{0.5\linewidth-{\widthof{#1}*\real{0.5}}}}{(И.О.Фамилия)}} % работает и не трогате, нужно для того, чтобы подчёркнутый текст в титульном листе имел одну длину (одну длину имела сама линия)
