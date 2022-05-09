@@ -242,7 +242,7 @@ sortcites=true
 \addbibresource{\subfix{bibfile.bib}} % добавил файл с библиографией
 \externaldocument{\subfix{template.tex}}
 
-% небольшие добавления диплома
+% небольшие добавления диплома (= подсекция свои команды)
 %рисует двойную линию в титульном листе
 \newcommand{\drawduallines}{\noindent\rule{\textwidth}{4pt}
 	
@@ -255,3 +255,10 @@ sortcites=true
 \usepackage[normalem]{ulem} % нижнее подчеркивание текста
 \usepackage{calc} % команда widthof для титульного
 \newcommand{\uname}[1]{\ulinedtext{\hspace{0.5\linewidth-{\widthof{#1}*\real{0.5}}} #1  \hspace{0.5\linewidth-{\widthof{#1}*\real{0.5}}}}{(И.О.Фамилия)}} % работает и не трогате, нужно для того, чтобы подчёркнутый текст в титульном листе имел одну длину (одну длину имела сама линия)
+
+\newcommand{\whr}{\text{, где}} % писать "где" после уравнения
+\usepackage[version=4]{mhchem} % химия
+\usepackage{placeins} % команда \FloatBarrier, полезная, если картинки и прочие float располагаются автоматически; не даёт картинкам убегать за пределы глав. Используется в ручном режиме после команды \section{} и подобных
+
+\newcommand{\razm}[1]{\hspace{1ex} \ensuremath{\left[\text{#1}\right]}} % размерность в квадраных скобках 
+\newcommand{\grad}{\ensuremath{^\circ}} % значок градусу
